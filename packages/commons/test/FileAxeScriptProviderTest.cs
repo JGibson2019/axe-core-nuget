@@ -27,26 +27,21 @@ namespace Deque.AxeCore.Commons.Test
         }
 
         [Test]
-        public void ConstructorPassedNullOrEmptyString()
+        public void ConstructorPassedInvalidStrings()
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
                 var scriptProvider = new FileAxeScriptProvider(null);
             });
 
-            Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 var scriptProvider = new FileAxeScriptProvider("");
             });
-        }
-
-        [Test]
-        public void ConstructorPassedNonexistentFile()
-        {
-            Assert.Throws<ArgumentException>(() =>
+            
+             Assert.Throws<ArgumentException>(() =>
             {
                 var scriptProvider = new FileAxeScriptProvider("sample.html");
-                scriptProvider.Should().NotBeNull();
             });
         }
 
